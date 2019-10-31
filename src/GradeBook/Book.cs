@@ -21,6 +21,10 @@ namespace GradeBook
             {
                 grades.Add(grade);
             }
+            else
+            {
+                throw new ArgumentException($"Invalid {nameof(grade)}");
+            }
         }
 
         public void AddLetterGrade(char letter)
@@ -116,7 +120,7 @@ namespace GradeBook
                     result.Letter = 'F';
                     break;
             }
-            
+
             return result;
         }
     }

@@ -8,10 +8,35 @@ namespace GradeBook
         static void Main(string[] args)
         {
             var book = new Book("Burcak's Grade Book");
-            
-            book.AddGrade(34.5);
-            book.AddGrade(40.5);
-            book.AddGrade(23);
+
+            while (true)
+            {
+                Console.WriteLine("Enter a grade or 'q' to quit.");
+                var input = Console.ReadLine();
+
+                if (input.ToLower() == "q")
+                {
+                    break;
+                }
+
+                try
+                {
+                    var grade = double.Parse(input);
+                    book.AddGrade(grade);
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    Console.WriteLine("**");
+                }
+            }
 
             var stats = book.GetStatistics();
 
