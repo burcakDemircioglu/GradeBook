@@ -8,5 +8,7 @@ namespace GradeBook
         
         public double Low;
 
+        public char Letter;
+
     }
 }
