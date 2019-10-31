@@ -8,6 +8,10 @@ namespace GradeBook
         static void Main(string[] args)
         {
             IBook book = new DiskBook("Burcak's Grade Book");
+
+            // Use ? to be able to assign null to the variable:
+            // Book? book = new DiskBook("");
+            
             book.GradeAdded += OnGradeAdded;
 
             EnterGrades(book);
