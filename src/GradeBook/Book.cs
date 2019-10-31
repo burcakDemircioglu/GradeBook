@@ -7,10 +7,19 @@ namespace GradeBook
     {
         private List<double> grades;
 
-        public string Name;
+        // readonly string category = "Science";
+
+        public const string CATEGORY = "Science";
+
+        public string Name
+        {
+            get;
+            private set;
+        }
 
         public Book(string name)
         {
+            // category = "";
             grades = new List<double>();
             Name = name;
         }
