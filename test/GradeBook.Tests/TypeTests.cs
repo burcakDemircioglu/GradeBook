@@ -3,8 +3,27 @@ using Xunit;
 
 namespace GradeBook.Tests
 {
+    public delegate string WriteLogDelegate(string logMessage);
     public class TypeTests
     {
+
+        [Fact]
+        public void WriteLogDelegateCanPointToMethod()
+        {
+            // arrange
+            WriteLogDelegate log = ReturnMessage;
+
+            // act
+            var result = log("Hello!");
+
+            // assert
+            Assert.Equal("Hello!", result);
+        }
+
+        string ReturnMessage(string message)
+        {
+            return message;
+        }
 
         [Fact]
         public void StringsBehaveLikeValueTypes()
@@ -84,23 +103,23 @@ namespace GradeBook.Tests
             book = new Book(name);
         }
 
-        // [Fact]
-        // public void CanSetNameFromReference()
-        // {
-        //     // arrange
-        //     var book1 = GetBook("Book 1");
+        [Fact]
+        public void CanSetNameFromReference()
+        {
+            // arrange
+            var book1 = GetBook("Book 1");
 
-        //     // act
-        //     SetName(book1, "New Name");
+            // act
+            SetName(book1, "New Name");
 
-        //     // assert
-        //     Assert.Equal("New Name", book1.Name);
-        // }
+            // assert
+            Assert.Equal("New Name", book1.Name);
+        }
 
-        // private void SetName(Book book, string name)
-        // {
-        //     book.Name = name;
-        // }
+        private void SetName(Book book, string name)
+        {
+            book.Name = name;
+        }
 
         [Fact]
         public void GetBookReturnsDifferentObjects()

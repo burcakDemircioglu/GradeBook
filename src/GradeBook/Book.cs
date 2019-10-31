@@ -14,7 +14,8 @@ namespace GradeBook
         public string Name
         {
             get;
-            private set;
+            set;
+            // private set;
         }
 
         public Book(string name)
